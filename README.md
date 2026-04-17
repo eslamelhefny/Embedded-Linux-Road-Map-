@@ -1,4 +1,4 @@
-# 🐧 Embedded Linux: The Ultimate Reference Guide
+#  Embedded Linux: The Ultimate Reference Guide
 
 <p align="center">
   <img src="https://img.shields.io/badge/Embedded-Linux-yellow?style=for-the-badge&logo=linux&logoColor=white" />
@@ -63,7 +63,7 @@
 
 This repository serves as a **one-stop reference** for anyone learning or working with Embedded Linux. Whether you're a student, a bare-metal embedded engineer transitioning to Linux, or an experienced developer looking to deepen your knowledge, you'll find curated and organized resources here.
 
-**Maintained by:** [Eslam Nasr](https://github.com/eslamnasr) — Embedded Linux Software Engineer, MSc Researcher & Senior Instructor.
+**Maintained by:** [Eslam El Hefny ](https://github.com/eslamelhefny) — Embedded Linux Software Engineer, MSc Researcher & Senior Instructor.
 
 > ⭐ If you find this useful, please **star** the repo and **share** it with your network!
 
@@ -83,10 +83,7 @@ This repository serves as a **one-stop reference** for anyone learning or workin
 ## 🗺 Roadmap
 
 The following roadmap guides you from zero to Embedded Linux Architect. Each phase builds on the previous one.
-
-```
-
-```
+![Road Map](roadmap.png)
 
 ---
 
