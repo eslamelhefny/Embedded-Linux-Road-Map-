@@ -744,9 +744,7 @@ Contributions are welcome! If you know of a great resource that's missing:
 ---
 
 ## 📄 License
-
-This repository is licensed under the [MIT License](LICENSE). Feel free to use, share, and contribute!
-
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 ---
 
 <p align="center">
