@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Linux Engineering Roadmap</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#1a1a1a;background:#fff;line-height:1.4}
+.rm{max-width:1100px;margin:0 auto;padding:16px 12px}
+.hdr{text-align:center;margin-bottom:14px}
+.hdr h1{font-size:22px;font-weight:600;letter-spacing:-.5px;margin-bottom:10px}
+.legend{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
+.lg-box{width:14px;height:14px;border-radius:3px}
+.lg-req{background:#E24B4A}
+.lg-rec{background:#EF9F27}
+.lg-pos{background:#1D9E75}
+.note{font-size:11px;color:#666;max-width:500px;margin:4px auto 0}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.section{border:1.5px solid;border-radius:10px;padding:8px;position:relative}
+.section-title{font-size:13px;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;color:#fff}
+.s-red{border-color:#E24B4A}.s-red .section-title{background:#E24B4A}
+.s-amber{border-color:#EF9F27}.s-amber .section-title{background:#BA7517}
+.s-teal{border-color:#1D9E75}.s-teal .section-title{background:#0F6E56}
+.s-blue{border-color:#378ADD}.s-blue .section-title{background:#185FA5}
+.s-purple{border-color:#7F77DD}.s-purple .section-title{background:#534AB7}
+.s-coral{border-color:#D85A30}.s-coral .section-title{background:#993C1D}
+.s-pink{border-color:#D4537E}.s-pink .section-title{background:#993556}
+.s-green{border-color:#639922}.s-green .section-title{background:#3B6D11}
+.s-gray{border-color:#888780}.s-gray .section-title{background:#5F5E5A}
+.cat{margin-bottom:6px}
+.cat-label{font-size:11px;font-weight:600;color:#555;margin-bottom:3px;padding-left:2px}
+.items{display:flex;flex-wrap:wrap;gap:3px}
+.item{font-size:10.5px;padding:2px 6px;border-radius:3px;font-weight:400;line-height:1.35;cursor:default;white-space:nowrap;border:0.5px solid transparent;transition:transform .15s}
+.item:hover{transform:scale(1.05)}
+.req{background:#FCEBEB;color:#791F1F;border-color:#F09595}
+.rec{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.pos{background:#E1F5EE;color:#085041;border-color:#9FE1CB}
+@media(prefers-color-scheme:dark){
+body{background:#1a1a1a;color:#e8e8e8}
+.req{background:#501313;color:#F7C1C1;border-color:#A32D2D}
+.rec{background:#412402;color:#FAC775;border-color:#854F0B}
+.pos{background:#04342C;color:#9FE1CB;border-color:#0F6E56}
+.cat-label{color:#aaa}
+.note{color:#999}
+.section{border-color:rgba(255,255,255,0.15)}
+}
+.wide{grid-column:span 2}
+@media(max-width:760px){.wide{grid-column:span 1}}
+.full{grid-column:1/-1}
+.start-badge{display:inline-block;background:#378ADD;color:#fff;font-size:12px;font-weight:600;padding:3px 14px;border-radius:12px;margin-bottom:8px}
+.flow-arrow{text-align:center;color:#888;font-size:18px;line-height:1;padding:2px 0}
+.sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sub-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+@media(max-width:760px){.sub-grid{grid-template-columns:1fr}.sub-grid-3{grid-template-columns:1fr 1fr}}
+.domain-row{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px}
+.domain-pill{font-size:10px;padding:2px 8px;border-radius:10px;background:#f5f5f5;color:#555;border:0.5px solid #ddd;font-weight:500}
+@media(prefers-color-scheme:dark){.domain-pill{background:#2a2a2a;color:#aaa;border-color:#444}}
+.footer{text-align:center;margin-top:14px;padding-top:10px;border-top:0.5px solid #ddd;font-size:11px;color:#888}
+@media(prefers-color-scheme:dark){.footer{border-color:#444}}
+.footer a{color:#378ADD;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="rm">
+<div class="hdr">
+<h1>Embedded Linux engineering roadmap</h1>
+<div class="legend">
+<div class="legend-item"><div class="lg-box lg-req"></div>Required</div>
+<div class="legend-item"><div class="lg-box lg-rec"></div>Recommended</div>
+<div class="legend-item"><div class="lg-box lg-pos"></div>Possibilities</div>
+</div>
+<p class="note">Colors indicate average importance. Actual priority varies by industry and job role.</p>
+</div>
+
+<div style="text-align:center"><span class="start-badge">start here</span></div>
+
+<div class="grid">
+
+<div class="section s-red full">
+<span class="section-title">Prerequisites</span>
+<div class="sub-grid-3">
+<div class="cat"><div class="cat-label">Programming languages</div><div class="items">
+<span class="item req">C (advanced)</span>
+<span class="item rec">C++</span>
+<span class="item rec">Python</span>
+<span class="item pos">Rust</span>
+<span class="item pos">Assembly</span>
+</div></div>
+<div class="cat"><div class="cat-label">Computer architecture</div><div class="items">
+<span class="item req">CPU / registers / cache</span>
+<span class="item req">MMU / virtual memory</span>
+<span class="item req">ARM Cortex-A</span>
+<span class="item rec">Endianness</span>
+<span class="item rec">Bus (AHB/AXI)</span>
+<span class="item pos">RISC-V</span>
+</div></div>
+<div class="cat"><div class="cat-label">Foundations</div><div class="items">
+<span class="item req">Git</span>
+<span class="item req">Basic electronics</span>
+<span class="item req">UART / SPI / I2C</span>
+<span class="item rec">Data structures</span>
+<span class="item rec">Networking basics</span>
+<span class="item rec">Makefiles</span>
+</div></div>
+</div></div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-red">
+<span class="section-title">Linux fundamentals</span>
+<div class="cat"><div class="cat-label">Command line & shell</div><div class="items">
+<span class="item req">CLI navigation</span>
+<span class="item req">Bash scripting</span>
+<span class="item req">grep / sed / awk</span>
+<span class="item req">File permissions</span>
+<span class="item req">vi / vim</span>
+</div></div>
+<div class="cat"><div class="cat-label">System concepts</div><div class="items">
+<span class="item req">Process management</span>
+<span class="item req">Filesystem hierarchy</span>
+<span class="item req">Signals</span>
+<span class="item rec">Service management</span>
+<span class="item rec">Environment vars</span>
+<span class="item rec">Package mgmt</span>
+</div></div>
+<div class="cat"><div class="cat-label">Networking</div><div class="items">
+<span class="item req">SSH / SCP</span>
+<span class="item req">ip / ifconfig</span>
+<span class="item rec">NFS / TFTP</span>
+<span class="item rec">tcpdump</span>
+</div></div>
+</div>
+
+<div class="section s-red">
+<span class="section-title">Toolchains & cross-compilation</span>
+<div class="cat"><div class="cat-label">Core concepts</div><div class="items">
+<span class="item req">Cross-compile concept</span>
+<span class="item req">GNU toolchain (GCC)</span>
+<span class="item req">Sysroot</span>
+<span class="item req">CROSS_COMPILE var</span>
+</div></div>
+<div class="cat"><div class="cat-label">C libraries</div><div class="items">
+<span class="item req">glibc</span>
+<span class="item rec">musl</span>
+<span class="item pos">uClibc-ng</span>
+</div></div>
+<div class="cat"><div class="cat-label">Tools</div><div class="items">
+<span class="item rec">Crosstool-NG</span>
+<span class="item rec">CMake cross-compile</span>
+<span class="item rec">Static vs dynamic linking</span>
+<span class="item rec">readelf / objdump</span>
+<span class="item pos">LLVM / Clang</span>
+</div></div>
+</div>
+
+<div class="section s-red">
+<span class="section-title">Bootloaders</span>
+<div class="cat"><div class="cat-label">Boot process</div><div class="items">
+<span class="item req">ROM → SPL → U-Boot → Kernel</span>
+<span class="item req">U-Boot commands</span>
+<span class="item req">Environment variables</span>
+<span class="item req">Device tree basics</span>
+</div></div>
+<div class="cat"><div class="cat-label">Boot methods</div><div class="items">
+<span class="item req">SD / eMMC boot</span>
+<span class="item req">TFTP boot</span>
+<span class="item rec">NFS root</span>
+<span class="item rec">Boot scripts (.scr)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Advanced</div><div class="items">
+<span class="item rec">SPL configuration</span>
+<span class="item rec">U-Boot driver model</span>
+<span class="item pos">Barebox</span>
+<span class="item pos">ARM TF-A</span>
+<span class="item pos">Secure boot</span>
+<span class="item pos">Falcon mode</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-red wide">
+<span class="section-title">Linux kernel</span>
+<div class="sub-grid">
+<div>
+<div class="cat"><div class="cat-label">Kernel essentials</div><div class="items">
+<span class="item req">Kernel architecture</span>
+<span class="item req">Source tree structure</span>
+<span class="item req">menuconfig / defconfig</span>
+<span class="item req">Cross-compilation</span>
+<span class="item req">Kernel modules (.ko)</span>
+<span class="item req">Boot parameters</span>
+<span class="item req">printk / dmesg</span>
+</div></div>
+<div class="cat"><div class="cat-label">Device tree (in-depth)</div><div class="items">
+<span class="item req">DTS / DTB / DTC</span>
+<span class="item req">Nodes & properties</span>
+<span class="item req">Compatible strings</span>
+<span class="item req">Interrupt specifiers</span>
+<span class="item req">Phandles & aliases</span>
+<span class="item rec">Device tree overlays</span>
+<span class="item rec">Pinctrl bindings</span>
+</div></div>
+</div>
+<div>
+<div class="cat"><div class="cat-label">Kernel internals</div><div class="items">
+<span class="item rec">Process scheduler (CFS)</span>
+<span class="item rec">Memory management</span>
+<span class="item rec">Interrupt handling</span>
+<span class="item rec">Synchronization</span>
+<span class="item rec">Timers & delays</span>
+<span class="item rec">Kbuild system</span>
+<span class="item rec">Kernel patching</span>
+</div></div>
+<div class="cat"><div class="cat-label">Advanced kernel</div><div class="items">
+<span class="item pos">Namespaces / cgroups</span>
+<span class="item pos">Security modules (LSM)</span>
+<span class="item pos">KASLR / hardening</span>
+<span class="item pos">Live patching</span>
+<span class="item pos">eBPF</span>
+</div></div>
+</div>
+</div></div>
+
+<div class="section s-red">
+<span class="section-title">Root filesystem</span>
+<div class="cat"><div class="cat-label">Core</div><div class="items">
+<span class="item req">RootFS structure</span>
+<span class="item req">BusyBox</span>
+<span class="item req">Init systems</span>
+<span class="item req">Shared libraries</span>
+<span class="item req">Device nodes / udev</span>
+<span class="item req">Pseudo FS (proc/sys)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Init variants</div><div class="items">
+<span class="item req">BusyBox init</span>
+<span class="item rec">systemd</span>
+<span class="item rec">SysVinit</span>
+<span class="item pos">Custom init</span>
+</div></div>
+<div class="cat"><div class="cat-label">Storage</div><div class="items">
+<span class="item req">initramfs / cpio</span>
+<span class="item rec">JFFS2 / UBIFS</span>
+<span class="item rec">SquashFS</span>
+<span class="item rec">OverlayFS</span>
+<span class="item pos">Read-only rootfs</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-amber wide">
+<span class="section-title">Build systems</span>
+<div class="sub-grid">
+<div>
+<div class="cat"><div class="cat-label">Buildroot</div><div class="items">
+<span class="item req">menuconfig</span>
+<span class="item req">Package selection</span>
+<span class="item req">Toolchain config</span>
+<span class="item rec">BR2_EXTERNAL</span>
+<span class="item rec">Custom packages (.mk)</span>
+<span class="item rec">Post-build scripts</span>
+<span class="item rec">Overlay filesystem</span>
+</div></div>
+</div>
+<div>
+<div class="cat"><div class="cat-label">Yocto / OpenEmbedded</div><div class="items">
+<span class="item req">BitBake & recipes (.bb)</span>
+<span class="item req">Layers & bblayers.conf</span>
+<span class="item req">local.conf / MACHINE</span>
+<span class="item rec">bbappend files</span>
+<span class="item rec">Custom layers</span>
+<span class="item rec">devtool</span>
+<span class="item rec">SDK generation</span>
+<span class="item rec">BSP layers</span>
+</div></div>
+</div>
+</div>
+<div class="cat"><div class="cat-label">Others</div><div class="items">
+<span class="item pos">OpenWRT</span>
+<span class="item pos">PTXdist</span>
+<span class="item pos">ELBE</span>
+<span class="item pos">Kas</span>
+<span class="item rec">opkg / rpm on target</span>
+<span class="item pos">Reproducible builds</span>
+</div></div>
+</div>
+
+<div class="section s-amber">
+<span class="section-title">Device drivers</span>
+<div class="cat"><div class="cat-label">Driver essentials</div><div class="items">
+<span class="item req">Linux device model</span>
+<span class="item req">Character drivers</span>
+<span class="item req">Platform drivers</span>
+<span class="item req">DT bindings</span>
+<span class="item req">ioremap / readl / writel</span>
+<span class="item req">IRQ handling</span>
+<span class="item req">Concurrency (spinlock/mutex)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Subsystems</div><div class="items">
+<span class="item rec">I2C subsystem</span>
+<span class="item rec">SPI subsystem</span>
+<span class="item rec">GPIO / libgpiod</span>
+<span class="item rec">PWM</span>
+<span class="item rec">Clock framework</span>
+<span class="item rec">Pinctrl</span>
+<span class="item rec">Regulator</span>
+<span class="item rec">DMA engine</span>
+<span class="item rec">ioctl / sysfs</span>
+</div></div>
+<div class="cat"><div class="cat-label">Specialized</div><div class="items">
+<span class="item pos">Block drivers</span>
+<span class="item pos">Network drivers</span>
+<span class="item pos">USB (host/gadget)</span>
+<span class="item pos">PCIe</span>
+<span class="item pos">IIO / ADC</span>
+<span class="item pos">Input subsystem</span>
+<span class="item pos">CAN / SocketCAN</span>
+<span class="item pos">Watchdog / RTC</span>
+<span class="item pos">Thermal</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-amber">
+<span class="section-title">System programming</span>
+<div class="cat"><div class="cat-label">POSIX / userspace</div><div class="items">
+<span class="item req">File I/O (open/read/write)</span>
+<span class="item req">fork / exec / wait</span>
+<span class="item req">Signals</span>
+<span class="item req">pthreads</span>
+<span class="item req">IPC (pipes/shm/mq)</span>
+<span class="item req">Socket programming</span>
+<span class="item req">mmap</span>
+</div></div>
+<div class="cat"><div class="cat-label">Extended</div><div class="items">
+<span class="item rec">D-Bus</span>
+<span class="item rec">epoll / event loop</span>
+<span class="item rec">Serial (termios)</span>
+<span class="item rec">Userspace HW access</span>
+<span class="item pos">Netlink sockets</span>
+<span class="item pos">gRPC / protobuf</span>
+</div></div>
+</div>
+
+<div class="section s-amber">
+<span class="section-title">Debugging & profiling</span>
+<div class="cat"><div class="cat-label">Essential</div><div class="items">
+<span class="item req">GDB / gdbserver</span>
+<span class="item req">strace</span>
+<span class="item req">Kernel oops / dmesg</span>
+<span class="item req">Serial console logs</span>
+</div></div>
+<div class="cat"><div class="cat-label">Advanced</div><div class="items">
+<span class="item rec">ftrace / trace-cmd</span>
+<span class="item rec">perf</span>
+<span class="item rec">Valgrind</span>
+<span class="item rec">KGDB / KDB</span>
+<span class="item rec">ASan / UBSan</span>
+<span class="item rec">Dynamic debug</span>
+</div></div>
+<div class="cat"><div class="cat-label">Specialized</div><div class="items">
+<span class="item pos">eBPF / bpftrace</span>
+<span class="item pos">LTTng</span>
+<span class="item pos">SystemTap</span>
+<span class="item pos">Crash dump (kdump)</span>
+<span class="item pos">KASAN / KMEMLEAK</span>
+<span class="item pos">Static analysis (sparse)</span>
+</div></div>
+</div>
+
+<div class="section s-amber">
+<span class="section-title">BSP development</span>
+<div class="cat"><div class="cat-label">Board bring-up</div><div class="items">
+<span class="item rec">BSP components</span>
+<span class="item rec">Board bring-up process</span>
+<span class="item rec">Custom device tree</span>
+<span class="item rec">Kernel porting</span>
+<span class="item rec">U-Boot porting</span>
+</div></div>
+<div class="cat"><div class="cat-label">Vendor SoCs</div><div class="items">
+<span class="item pos">TI (AM335x/AM62x)</span>
+<span class="item pos">NXP (i.MX6/8/93)</span>
+<span class="item pos">ST (STM32MP1/2)</span>
+<span class="item pos">Broadcom / Rockchip</span>
+<span class="item pos">Allwinner / MediaTek</span>
+</div></div>
+<div class="cat"><div class="cat-label">Debug HW</div><div class="items">
+<span class="item pos">JTAG / SWD</span>
+<span class="item pos">OpenOCD</span>
+<span class="item pos">Reading schematics</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-teal">
+<span class="section-title">System integration</span>
+<div class="cat"><div class="cat-label">Optimization</div><div class="items">
+<span class="item rec">Boot time optimization</span>
+<span class="item rec">System size reduction</span>
+<span class="item rec">Power management</span>
+<span class="item rec">cpufreq / cpuidle</span>
+<span class="item rec">Watchdog timer</span>
+</div></div>
+<div class="cat"><div class="cat-label">Production</div><div class="items">
+<span class="item rec">Flash programming</span>
+<span class="item pos">Manufacturing / test</span>
+<span class="item pos">GPL compliance</span>
+<span class="item pos">SBOM / licensing</span>
+<span class="item pos">CI/CD embedded</span>
+</div></div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">OTA updates</span>
+<div class="cat"><div class="cat-label">Concepts</div><div class="items">
+<span class="item rec">A/B partitioning</span>
+<span class="item rec">Rollback mechanisms</span>
+<span class="item rec">Signed images</span>
+<span class="item rec">Partition design</span>
+</div></div>
+<div class="cat"><div class="cat-label">Frameworks</div><div class="items">
+<span class="item rec">SWUpdate</span>
+<span class="item rec">Mender</span>
+<span class="item rec">RAUC</span>
+<span class="item pos">Hawkbit (fleet)</span>
+<span class="item pos">Balena</span>
+<span class="item pos">Container-based OTA</span>
+</div></div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">Security</span>
+<div class="cat"><div class="cat-label">Core</div><div class="items">
+<span class="item rec">Secure boot chain</span>
+<span class="item rec">dm-verity / dm-crypt</span>
+<span class="item rec">TLS / SSH hardening</span>
+<span class="item rec">Firewall (nftables)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Advanced</div><div class="items">
+<span class="item pos">SELinux / AppArmor</span>
+<span class="item pos">TPM / TrustZone</span>
+<span class="item pos">OP-TEE</span>
+<span class="item pos">CVE management</span>
+<span class="item pos">Fuzzing / pen testing</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-teal">
+<span class="section-title">Networking</span>
+<div class="cat"><div class="cat-label">Configuration</div><div class="items">
+<span class="item rec">Static IP / DHCP</span>
+<span class="item rec">systemd-networkd</span>
+<span class="item rec">WiFi (wpa_supplicant)</span>
+<span class="item rec">Bluetooth (BlueZ)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Protocols</div><div class="items">
+<span class="item pos">MQTT / CoAP</span>
+<span class="item pos">Modbus / OPC-UA</span>
+<span class="item pos">CAN / SocketCAN</span>
+<span class="item pos">LoRa / NB-IoT</span>
+<span class="item pos">Cellular (4G/5G)</span>
+<span class="item pos">Bridge / VLAN</span>
+</div></div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">Real-time Linux</span>
+<div class="cat"><div class="cat-label">PREEMPT_RT</div><div class="items">
+<span class="item pos">RT patch & config</span>
+<span class="item pos">RT scheduling (FIFO/RR)</span>
+<span class="item pos">mlockall / CPU affinity</span>
+<span class="item pos">cyclictest / hwlatdetect</span>
+<span class="item pos">Priority inversion</span>
+</div></div>
+<div class="cat"><div class="cat-label">Mixed criticality</div><div class="items">
+<span class="item pos">AMP (Cortex-A + M)</span>
+<span class="item pos">RPMsg / remoteproc</span>
+<span class="item pos">OpenAMP</span>
+<span class="item pos">Jailhouse hypervisor</span>
+</div></div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">Graphics, audio & GUI</span>
+<div class="cat"><div class="cat-label">Display</div><div class="items">
+<span class="item pos">DRM / KMS</span>
+<span class="item pos">Wayland / Weston</span>
+<span class="item pos">GPU drivers (Mesa)</span>
+<span class="item pos">Framebuffer (legacy)</span>
+<span class="item pos">V4L2 (camera)</span>
+</div></div>
+<div class="cat"><div class="cat-label">Frameworks</div><div class="items">
+<span class="item pos">Qt / QML</span>
+<span class="item pos">LVGL</span>
+<span class="item pos">Flutter embedded</span>
+<span class="item pos">GStreamer</span>
+</div></div>
+<div class="cat"><div class="cat-label">Audio</div><div class="items">
+<span class="item pos">ALSA / ASoC</span>
+<span class="item pos">PipeWire</span>
+<span class="item pos">DAPM</span>
+</div></div>
+</div>
+
+</div>
+<div class="flow-arrow">&#9660;</div>
+<div class="grid">
+
+<div class="section s-teal">
+<span class="section-title">Containers & virtualization</span>
+<div class="items">
+<span class="item pos">Docker / Podman</span>
+<span class="item pos">containerd</span>
+<span class="item pos">Balena</span>
+<span class="item pos">Torizon</span>
+<span class="item pos">KVM on ARM</span>
+<span class="item pos">Xen</span>
+<span class="item pos">MicroVMs (Firecracker)</span>
+</div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">AI / ML at the edge</span>
+<div class="items">
+<span class="item pos">TensorFlow Lite</span>
+<span class="item pos">ONNX Runtime</span>
+<span class="item pos">OpenCV</span>
+<span class="item pos">NVIDIA Jetson / TensorRT</span>
+<span class="item pos">NPU / Edge TPU</span>
+<span class="item pos">Model quantization</span>
+</div>
+</div>
+
+<div class="section s-teal">
+<span class="section-title">Simulation & emulation</span>
+<div class="items">
+<span class="item rec">QEMU (system)</span>
+<span class="item rec">QEMU (user-mode)</span>
+<span class="item pos">Renode</span>
+<span class="item pos">VirtualBox / Docker</span>
+<span class="item pos">WSL2</span>
+</div>
+</div>
+
+</div>
+
+<div style="text-align:center;margin:14px 0 4px">
+<div style="font-size:12px;font-weight:600;color:#666;margin-bottom:6px">Industry domains</div>
+<div class="domain-row">
+<span class="domain-pill">Automotive (AGL / AUTOSAR)</span>
+<span class="domain-pill">Industrial IoT</span>
+<span class="domain-pill">Medical devices</span>
+<span class="domain-pill">Aerospace & defense</span>
+<span class="domain-pill">Consumer electronics</span>
+<span class="domain-pill">Telecommunications</span>
+<span class="domain-pill">Robotics (ROS2)</span>
+<span class="domain-pill">Smart energy</span>
+<span class="domain-pill">Agriculture</span>
+</div>
+</div>
+
+<div class="footer">
+<strong>Embedded Linux Engineering Roadmap</strong> &mdash; ~150 topics across 20 sections<br>
+Creator & maintainer: <strong>Eslam Elhefny</strong> &mdash; <a href="https://embeddexai.com">EmbeddexAI</a><br>
+<a href="https://github.com/eslamelhefny/Embedded-Linux-Roadmap">github.com/eslamelhefny/Embedded-Linux-Roadmap</a>
+</div>
+
+</div>
+</body>
+</html>
